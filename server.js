@@ -15,8 +15,9 @@ app.use('/api/tasks', require('./routes/tasks'));
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ Conectado a MongoDB Atlas');
-    app.listen(process.env.PORT || 3000, () => {
-      console.log('🚀 Servidor corriendo en puerto 3000');
-    });
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+});
   })
   .catch(err => console.error('❌ Error de conexión:', err));

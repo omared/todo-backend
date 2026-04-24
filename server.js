@@ -10,14 +10,15 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/users', require('./routes/users'));
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ Conectado a MongoDB Atlas');
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
-});
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+    });
   })
   .catch(err => console.error('❌ Error de conexión:', err));
